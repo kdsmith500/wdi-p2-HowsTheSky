@@ -1,15 +1,15 @@
 <%- include('../partials/header') %>
 
-<h1>test:users show</h1>
-
 <div class="ui centered card">
     <div class="image">
-        <img src="#">
+        <img src="<%= user.avatar %>">
     </div>
     <div class="content">
-        <a class="header">User</a>
+        <a class="header"><%= user.name %></a>
     </div>
 </div>
+
+ <!-- user.threads.forEach(function(ut) {  -->
 
 <div class="ui items">
     <div class="item">
@@ -17,18 +17,20 @@
             <img src="#">
         </div>
         <div class="content">
-            <a class="header">Header</a>
+            <a class="header"></a>
             <div class="meta">
-                <span>Description</span>
+                <span> ut.subject </span>
             </div>
             <div class="description">
-                <p></p>
+                <!-- thread subject goes here -->
             </div>
             <div class="extra">
-                Additional Details
+                <!-- total thread, last logged in, something -->
             </div>
         </div>
     </div>
 </div>
+
+ <!-- });  -->
 
 <%- include('../partials/footer') %>

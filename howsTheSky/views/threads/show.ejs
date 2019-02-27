@@ -1,22 +1,20 @@
 <%- include('../partials/header') %>
 
-<h1>test:threads show</h1>
-
 <div class="ui items">
     <div class="item">
-        <div class="image">
-            <img src="#">
+        <div class="thread-image">
+            <img src="<%= thread.image %>">
         </div>
         <div class="content">
-            <a class="header">Header</a>
+            <a class="header">User</a>
             <div class="meta">
-                <span>Description</span>
+                <span><%= thread.subject %></span>
             </div>
             <div class="description">
-                <p></p>
+                <p><%= thread.message %></p>
             </div>
             <div class="extra">
-                Additional Details
+                <!-- last reply -->
             </div>
         </div>
     </div>

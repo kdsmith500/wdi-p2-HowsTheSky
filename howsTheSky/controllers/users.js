@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var Thread = require('../models/thread');
 
 module.exports = {
     index,
@@ -7,6 +8,7 @@ module.exports = {
 
 function index(req, res) {
     User.find({}, function(err, users) {
+        // console.log(users);
         res.render('users', {
             users,
             user: req.user,
@@ -17,10 +19,14 @@ function index(req, res) {
 }
 
 function show(req, res) {
-    User.findById(req.params.id, function(err, user) {
-        res.render('users/show', {
-            user,
-            title: 'User'
-        })
+    User.findById(req.params.id).populate('threads').exec(function(err, user) {
+        Thread.find({user: user._id}, function(err, threads) {
+            console.log(user, "TTTTTTT", threads);
+            res.render('users/show', {
+                user,
+                threads,
+                title: 'User'
+            })
+        });
     });
 }

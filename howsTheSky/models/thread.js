@@ -20,10 +20,10 @@ var replySchema = new Schema({
 });
 
 var threadSchema = new Schema({
-    user: {
+    user: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
-    },
+    }],
     subject: {
         type: String
     },

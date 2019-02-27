@@ -1,25 +1,27 @@
 <%- include('../partials/header') %>
 
-<h1>test:users index</h1>
+<% users.forEach(function(u) { %>
 
-<div class="ui items">
+<div class="ui items users-items">
     <div class="item">
-        <div class="image">
-            <img src="#">
+        <div class="image avatar">
+            <img src=<%= u.avatar %>>
         </div>
         <div class="content">
-            <a class="header">Header</a>
-            <div class="meta">
-                <span>Description</span>
+            <a class="header" href="/users/<%= u._id %>"><%= u.name %></a>
+            <div class="meta users-threads">
+                <span>Threads</span>
             </div>
             <div class="description">
-                <p></p>
+                <span><%= u.thread %></span>
             </div>
             <div class="extra">
-                Additional Details
+                <!-- have an ai api put something here -->
             </div>
         </div>
     </div>
 </div>
+
+<% }); %>
 
 <%- include('../partials/footer') %>

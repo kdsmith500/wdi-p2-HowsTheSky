@@ -3,6 +3,10 @@ var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
     googleId: {
+        type: String,
+        required: true
+    },
+    avatar: {
         type: String
     },
     name: {
@@ -11,13 +15,11 @@ var userSchema = new Schema({
     },
     email: {
         type: String,
+        required: true
     },
-    location: {
-        type: String,
-    },
-    skys: [{
+    thread: [{
         type: Schema.Types.ObjectId,
-        ref: 'Sky'
+        ref: 'Thread'
     }]
 }, {
     timestamps: true

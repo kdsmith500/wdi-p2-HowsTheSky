@@ -14,9 +14,11 @@ passport.use(new GoogleStrategy(
             if (user) {
                 return cb(null, user);
             } else {
+                var avatar = profile._json.image.url;
                 var newUser = new User({
                     name: profile.displayName,
                     email: profile.emails[0].value,
+                    avatar: avatar.substring(0, avatar.length - 6),
                     googleId: profile.id
                 });
                 newUser.save(function(err) {

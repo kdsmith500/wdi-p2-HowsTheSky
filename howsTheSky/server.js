@@ -22,14 +22,16 @@ require('./config/passport');
 // require routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var skiesRouter = require('./routes/skies');
+var threadsRouter = require('./routes/threads');
 var usersApiRouter = require('./routes/api/users');
-var skiesApiRouter = require('./routes/api/skies');
+var threadsApiRouter = require('./routes/api/threads');
+var repliesApiRouter = require('./routes/api/replies');
 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -47,9 +49,10 @@ app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
-app.use('/users', skiesRouter);
+app.use('/users/:id', threadsRouter);
 app.use('/api', usersApiRouter);
-app.use('/api/users', skiesApiRouter);
+app.use('/api/users/:id', threadsApiRouter);
+app.use('/api/users/:id/threads', repliesApiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -23,9 +23,9 @@ require('./config/passport');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var threadsRouter = require('./routes/threads');
-var usersApiRouter = require('./routes/api/users');
-var threadsApiRouter = require('./routes/api/threads');
-var repliesApiRouter = require('./routes/api/replies');
+// var usersApiRouter = require('./routes/api/users');
+// var threadsApiRouter = require('./routes/api/threads');
+// var repliesApiRouter = require('./routes/api/replies');
 
 
 // view engine setup
@@ -49,10 +49,10 @@ app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
-app.use('/users/:id', threadsRouter);
-app.use('/api', usersApiRouter);
-app.use('/api/users/:id', threadsApiRouter);
-app.use('/api/users/:id/threads', repliesApiRouter);
+app.use('/', threadsRouter);
+// app.use('/api', usersApiRouter);
+// app.use('/api/users/:id', threadsApiRouter);
+// app.use('/api/users/:id/threads', repliesApiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -35,10 +35,18 @@ function newThread(req, res) {
 }
 
 function create(req, res) {
+    for (let key in req.body) {
+        if (req.body[key] === '') delete req.body[key];
+    }
     Thread.create(req.body, function(err, thread) {
+        thread.user = req.user._id
         if (err) return res.redirect('threads/new');
-        thread.save();
-        res.redirect(`threads/${thread._id}`); 
+        User.findOneAndUpdate(
+            {googleId: req.user.googleId},
+            {$push: { thread: thread }},
+            function(err, user) {
+                res.redirect(`threads/${thread._id}`); 
+        });
     });
 };
 

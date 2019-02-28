@@ -4,11 +4,11 @@
 
     <div class="ui items users-items">
         <div class="item">
-            <div class="thread-image">
+            <a href="<%= t.image %>" class="ui big image thread-image">
                 <img src=<%= t.image %>>
-            </div>
+            </a>
             <div class="content">
-                <a class="header" href="/users/user/threads/<%= t._id %>"><%= t.subject %></a>
+                <a class="header" href="/threads/<%= t._id %>"><%= t.subject %></a>
                 <div class="meta threads-message">
                     <span>Message</span>
                 </div>

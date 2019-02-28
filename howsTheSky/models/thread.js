@@ -10,7 +10,8 @@ var replySchema = new Schema({
         type: String
     },
     image: {
-        type: String
+        type: String,
+        default: "https://upload.wikimedia.org/wikipedia/en/d/d0/JaketheDog.png"
     },
     message: {
         type: String
@@ -20,15 +21,16 @@ var replySchema = new Schema({
 });
 
 var threadSchema = new Schema({
-    user: [{
+    user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }],
+    },
     subject: {
         type: String
     },
     image: {
-        type: String
+        type: String,
+        default: "https://cdn.bulbagarden.net/upload/f/f5/399Bidoof.png"
     },
     message: {
         type: String
